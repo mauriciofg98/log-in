@@ -6,6 +6,11 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Navbar</span>
+</nav>
+
   <div class="header">
   	<h2>Register</h2>
   </div>

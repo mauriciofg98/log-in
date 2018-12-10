@@ -7,14 +7,14 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'project');
+$db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'project');
 
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 else
 {
-  echo "succesfull connection";
+  // echo "succesfull connection";
 }
 
 // REGISTER USER
