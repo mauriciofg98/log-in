@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+<a href="/log-in/deleteemployee.php">Remove an Employee</a>
 
   <div class="header">
   	<h2>Register Employee</h2>
