@@ -115,5 +115,24 @@ if (isset($_POST['reg_employee']))
 }
 
 
+if (isset($_POST['projectloc']))
+{
+   $Project_Address = mysqli_real_escape_string($db, $_REQUEST['Project_Address']);
+   $Project_Location_Name = mysqli_real_escape_string($db, $_REQUEST['Project_Location_Name']);
+   $Project_ZIP = mysqli_real_escape_string($db, $_REQUEST['Project_ZIP']);
+   $Project_Location_City = mysqli_real_escape_string($db, $_REQUEST['Project_Location_City']);
+   $Project_Location_County = mysqli_real_escape_string($db, $_REQUEST['Project_Location_County']);
+   $Region_ID= mysqli_real_escape_string($db, $_REQUEST['Region_ID']);
+
+
+  $sql = "INSERT INTO Project_Location ( Project_Address, Project_Location_Name, Project_ZIP, Project_Location_City, Project_Location_County, Region_ID) VALUES ( '$Project_Address', '$Project_Location_Name', '$Project_ZIP', '$Project_Location_City', '$Project_Location_County', '$Region_ID')";
+  if(mysqli_query($db, $sql)){
+    echo "Records added successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+}
+
+}
+
 
 ?>
