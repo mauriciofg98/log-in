@@ -149,4 +149,48 @@ if (isset($_POST['reg']))
   }
 }
 
+if (isset($_POST['weekid']))
+{
+  $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
+
+  $sql = "INSERT INTO Week ('ID', 'Monday_Ci', 'Monday_Co', 'Tuesday_Ci', 'Tuesday_Co', 'Wednesday_Ci', 'Wednesday_Co', 'Thursday_Ci', 'Thursday_Co', 'Friday_Ci', 'Friday_Co', 'Saturday_Ci', 'Saturday_Co', 'Sunday_Ci', 'Sunday_Co') VALUES ('$ID', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000')";
+  // $sql = "INSERT INTO Week (ID) VALUES ( '$ID')";
+
+  if(mysqli_query($db, $sql)){
+    echo "Records added successfully.";
+  }
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
+}
+
+if (isset($_POST['week']))
+{
+  $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
+  $Monday_Ci = mysqli_real_escape_string($db, $_REQUEST['Monday_Ci']);
+  $Monday_Co = mysqli_real_escape_string($db, $_REQUEST['Monday_Co']);
+  $Tuesday_Ci = mysqli_real_escape_string($db, $_REQUEST['Tuesday_Ci']);
+  $Tuesday_Co = mysqli_real_escape_string($db, $_REQUEST['Tuesday_Co']);
+  $Wednesday_Ci = mysqli_real_escape_string($db, $_REQUEST['Wednesday_Ci']);
+  $Wednesday_Co = mysqli_real_escape_string($db, $_REQUEST['Wednesday_Co']);
+  $Thursday_Ci = mysqli_real_escape_string($db, $_REQUEST['Thursday_Ci']);
+  $Thursday_Co = mysqli_real_escape_string($db, $_REQUEST['Thursday_Co']);
+  $Friday_Ci = mysqli_real_escape_string($db, $_REQUEST['Friday_Ci']);
+  $Friday_Co = mysqli_real_escape_string($db, $_REQUEST['Friday_Co']);
+  $Saturday_Ci = mysqli_real_escape_string($db, $_REQUEST['Saturday_Ci']);
+  $Saturday_Co = mysqli_real_escape_string($db, $_REQUEST['Saturday_Co']);
+  $Sunday_Ci = mysqli_real_escape_string($db, $_REQUEST['Sunday_Ci']);
+  $Sunday_Co = mysqli_real_escape_string($db, $_REQUEST['Sunday_Co']);
+
+
+  $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
+
+  if(mysqli_query($db, $sql)){
+    #echo "Records added successfully.";
+  }
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
+}
+
 ?>

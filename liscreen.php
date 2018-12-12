@@ -10,7 +10,25 @@
 </head>
 <body>
 
-<form method="post" action="logincheck.php">
+<style>
+    .error{
+        font-size:20px;
+        color:#5C5C5C;
+    }
+</style>
+
+<?php
+if (isset($_GET['a'])){
+    if($_GET['a']=='y'){
+        echo "<div class=error><center><b>This employee ID doesn't exist.</b></center><div>";
+    }
+    else{
+    echo "No value received.";
+    }
+}
+?>
+
+<form method="POST" action="logincheck.php">
     <div class="container">    
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
@@ -27,12 +45,15 @@
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <input id="id" type="text" class="form-control" name="ID" value="" placeholder=" Employee ID / Empliado ID">
-                        
                                     </div>
                 <div style="margin-top:10px" class="form-group">
+                  <!-- <div class="input-group">
+                    <button type="submit" class="btn btn-success" name="week-id">Log-In</button>
+                  </div> -->
                   <div class="input-group">
-                    <button type="submit" class="btn btn-success" name="week">Login</button>
+                    <button type="submit" class="btn btn-success" name="weekid">LoginTEST</button>
                   </div>
+                </div>
                 </div>
               </center> 
                             </form>     

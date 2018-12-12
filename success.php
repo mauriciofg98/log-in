@@ -58,6 +58,8 @@ $conn->close();
 
 <p style="font-size:20px;color:#5C5C5C;">Use This ID number to Login.</p>
 
+
+
         <a href="liscreen.php" class="btn btn-success">     Log in      </a>
     <br><br>
         </div>
