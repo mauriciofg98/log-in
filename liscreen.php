@@ -38,7 +38,7 @@ if (isset($_GET['a'])){
             <form id="loginform" class="form-horizontal" role="form">
               <div style="margin-bottom: 25px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                  <input type="number" name="ID" class="form-control" placeholder=" ID">
+                  <input type="number" name="ID" class="form-control" placeholder=" Employee ID / Empliado ID">
               </div>
               <center>
                 <div style="margin-top:10px" class="form-group">
