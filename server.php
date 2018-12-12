@@ -7,7 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'project');
+$db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
 
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -134,5 +134,19 @@ if (isset($_POST['projectloc']))
 
 }
 
+if (isset($_POST['reg']))
+{
+  $Name = mysqli_real_escape_string($db, $_REQUEST['Name']);
+  $Age = mysqli_real_escape_string($db, $_REQUEST['Age']);
+
+  $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
+
+  if(mysqli_query($db, $sql)){
+    #echo "Records added successfully.";
+  }
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
+}
 
 ?>

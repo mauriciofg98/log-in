@@ -19,6 +19,10 @@
       <input type="number" name="Employee_ID">
     </div>
 
+    <div class="input-group">
+      <button type="submit" class="btn" name="deleteemp">Register</button>
+    </div>'
+
 </form>
  </body>
  </html> 

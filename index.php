@@ -15,7 +15,6 @@
     <!-- <li><a href="index.php">Home</a></li> -->
     <li><a href="employeerecords.php">View employees in your region</a></li>
     <li><a href="registeremployee.php">Register/Delete an employee</a></li>
-    <li><a href="deleteemployee.php">Delete employee</a></li>
     <li><a href="projectlocation.php">Add/Remove a project location</a></li>
     <li><a href="appoint.php">Appoint/Remove a Project Manager or Superintendent</a></li>
 
