@@ -148,7 +148,7 @@ if (isset($_POST['reg']))
 
 if (isset($_POST['weekid'])){
   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
-  $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000')";
+  $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000')";
   if(mysqli_query($db, $sql)){
     echo "Records added successfully.";
   }
@@ -184,7 +184,7 @@ if (isset($_POST['weekid'])){
 
 if (isset($_POST['clock'])){
 
-  $date = date('Y-m-d H:i:s.u');
+  $date = date('Y-m-d H:i:s');
   $id = mysqli_real_escape_string($db, $_REQUEST['ID']);
 
   $conn = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
@@ -203,7 +203,7 @@ if ($result->num_rows > 0){
 
 $unixTimestamp = strtotime($date);
 $dayOfWeek = date("l", $unixTimestamp);
-echo $date; 
+echo "Todays Date:" . $date . " Falls on a " . $dayOfWeek . "<br>"; 
 //echo $date . ' fell on a ' . $dayOfWeek;
 $query;
 $out;
@@ -238,27 +238,28 @@ else if ($dayOfWeek == "Sunday"){
 else {
   echo "Error!";
 }
+echo $query . "<br>" . $out . "<br>";
 $sql = "SELECT $query, $out FROM Week WHERE ID='$id'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0){
   $row = $result->fetch_assoc();
-  echo $row[$query] . " " . $row[$out];
+  echo  $query . " Time: " . $row[$query] . "<br>" . $out . " Time: " . $row[$out];
   //When they Clock-In Correctly
-  if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00.000000' && $_POST['clock'] == '0')){
+  if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
     $sql = "UPDATE Week SET $query = '$date' WHERE ID = '$id'";
     echo "Successfully Clocked-In!";
   }
   //When they Clock-Out Correctly
-  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00.000000' && $_POST['clock'] == '1')){
+  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
     $sql = "UPDATE Week SET $out = '$date' WHERE ID = '$id'";
     echo "Successfully Clocked-Out!";
   }
   //When they "double" Clock-In
-  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00.000000' && $_POST['clock'] == '0')){
+  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
     header('Location: clockpage.php?a=c');
   }
   //When they "double" Clock_Out
-  else if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00.000000' && $_POST['clock'] == '1')){
+  else if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
     header('Location: clockpage.php?a=b');
   }
   else{
