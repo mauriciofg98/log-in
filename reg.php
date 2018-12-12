@@ -5,8 +5,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-  <title>Register Employee</title>
+      <title>Register Employee</title>
 </head>
 <body>
 
@@ -28,7 +27,7 @@
               </div>
               <div style="margin-bottom: 25px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                  <input type="number" name="Age" class="form-control" placeholder=" Age">                                        
+                  <input type="number" name="Age" class="form-control" placeholder=" Age">
               </div>
               <center>
                 <div style="margin-top:10px" class="form-group">

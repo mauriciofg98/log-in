@@ -12,13 +12,12 @@ $db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-else
-{
+else{
   // echo "succesfull connection";
 }
 
 // REGISTER USER
-if (isset($_POST['reg_user'])) {
+if (isset($_POST['reg_user'])){
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -133,14 +132,12 @@ if (isset($_POST['projectloc']))
 }
 
 }
-
+//////////////////////////////////////////////////////////////////////////
 if (isset($_POST['reg']))
 {
   $Name = mysqli_real_escape_string($db, $_REQUEST['Name']);
   $Age = mysqli_real_escape_string($db, $_REQUEST['Age']);
-
   $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
-
   if(mysqli_query($db, $sql)){
     #echo "Records added successfully.";
   }
@@ -149,13 +146,9 @@ if (isset($_POST['reg']))
   }
 }
 
-if (isset($_POST['weekid']))
-{
+if (isset($_POST['weekid'])){
   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
-
-  $sql = "INSERT INTO Week ('ID', 'Monday_Ci', 'Monday_Co', 'Tuesday_Ci', 'Tuesday_Co', 'Wednesday_Ci', 'Wednesday_Co', 'Thursday_Ci', 'Thursday_Co', 'Friday_Ci', 'Friday_Co', 'Saturday_Ci', 'Saturday_Co', 'Sunday_Ci', 'Sunday_Co') VALUES ('$ID', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000')";
-  // $sql = "INSERT INTO Week (ID) VALUES ( '$ID')";
-
+  $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000')";
   if(mysqli_query($db, $sql)){
     echo "Records added successfully.";
   }
@@ -164,8 +157,7 @@ if (isset($_POST['weekid']))
   }
 }
 
-if (isset($_POST['week']))
-{
+if (isset($_POST['week'])){
   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
   $Monday_Ci = mysqli_real_escape_string($db, $_REQUEST['Monday_Ci']);
   $Monday_Co = mysqli_real_escape_string($db, $_REQUEST['Monday_Co']);
@@ -181,10 +173,7 @@ if (isset($_POST['week']))
   $Saturday_Co = mysqli_real_escape_string($db, $_REQUEST['Saturday_Co']);
   $Sunday_Ci = mysqli_real_escape_string($db, $_REQUEST['Sunday_Ci']);
   $Sunday_Co = mysqli_real_escape_string($db, $_REQUEST['Sunday_Co']);
-
-
   $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
-
   if(mysqli_query($db, $sql)){
     #echo "Records added successfully.";
   }
@@ -192,5 +181,4 @@ if (isset($_POST['week']))
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
   }
 }
-
 ?>
