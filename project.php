@@ -32,7 +32,7 @@
               <center>
                 <div style="margin-top:10px" class="form-group">
                   <div class="input-group">
-                    <button type="submit" class="btn btn-success" name="reg">Register</button>
+                    <button type="submit" class="btn btn-success" name="project">Register</button>
                   </div>
                 </div>
               </center>

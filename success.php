@@ -23,19 +23,39 @@ if ($result->num_rows > 0){
 else{
     echo "0 results";
 }
+
+
 ?>
     <p style="font-size:20px;color:#5C5C5C;">Thank you for registering with us today, this is your ID:</p>
 <?php
 $sql = "SELECT ID FROM Employee WHERE ID=(SELECT max(ID) FROM Employee )";
+$ID;
 $result = $db->query($sql);
 if ($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
         echo "<h3>" . $row["ID"]. "</h3><br>";
+        $ID = $row["ID"];
     }
 }
 else{
     echo "0 results";
 }
+  $race = mysqli_real_escape_string($db, $_REQUEST['Race']);
+  $gender = mysqli_real_escape_string($db, $_REQUEST['Gender']);
+  $age = mysqli_real_escape_string($db, $_REQUEST['Age']);
+  $email = mysqli_real_escape_string($db, $_REQUEST['email']);
+  $phone = mysqli_real_escape_string($db, $_REQUEST['phone']);
+  $address = mysqli_real_escape_string($db, $_REQUEST['address']);
+  $sql = "INSERT INTO contact ( ID, email, phone, address) VALUES ('$ID', '$email', '$phone', '$address')";
+  if(mysqli_query($db, $sql)){}
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
+$sql = "INSERT INTO Demographics ( ID, Race, Gender, Age) VALUES ('$ID', '$race', '$gender', '$age')";
+if(mysqli_query($db, $sql)){}
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
 ?>
             <p style="font-size:20px;color:#5C5C5C;">Use This ID number to Login.</p>
             <a href="liscreen.php" class="btn btn-success">Login</a><br><br>

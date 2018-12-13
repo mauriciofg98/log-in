@@ -20,7 +20,10 @@
         </div> 
         <div style="padding-top:30px" class="panel-body" >
           <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99c763d326faa6fbb8d161683a56d9a38e8ade7d
             <form id="loginform" class="form-horizontal" role="form">
               <div style="margin-bottom: 25px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -68,11 +71,28 @@
                   <div class="input-group">
                     <button type="submit" class="btn btn-success" name="reg">Register</button>
                   </div>
+<<<<<<< HEAD
 
+=======
+<!--           <form id="loginform" class="form-horizontal" role="form">
+            <div style="margin-bottom: 25px" class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="Name" class="form-control" placeholder=" Full Name">
+            </div>
+            <div style="margin-bottom: 25px" class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="number" name="Age" class="form-control" placeholder=" Age">
+            </div>
+            <center>
+              <div style="margin-top:10px" class="form-group">
+                <div class="input-group">
+                  <button type="submit" class="btn btn-success" name="reg">Register</button>
+>>>>>>> 9e7b93f967ce4550d0a3336188ce750804616436
+>>>>>>> 99c763d326faa6fbb8d161683a56d9a38e8ade7d
                 </div>
               </div>
             </center>
-          </form>
+          </form> -->
         </div>                     
       </div>  
     </div>
