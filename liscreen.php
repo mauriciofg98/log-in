@@ -30,7 +30,7 @@ if (isset($_GET['a'])){
       <div class="panel panel-info" >
         <div class="panel-heading">
           <div class="panel-title">
-            <center><b>Log IN</b></center>
+            <center><b>Login</b></center>
           </div>
         </div> 
         <div style="padding-top:30px" class="panel-body" >
@@ -43,7 +43,7 @@ if (isset($_GET['a'])){
               <center>
                 <div style="margin-top:10px" class="form-group">
                   <div class="input-group">
-                    <button type="submit" class="btn btn-success" name="weekid">LOGIN</button>
+                    <button type="submit" class="btn btn-success" name="weekid">Login</button>
                   </div>
                 </div>
               </center>
@@ -53,6 +53,10 @@ if (isset($_GET['a'])){
       </div>
     </div>
 </form>
+
+<br>
+<a href="reg.php" class="btn btn-success">Go to Register Page</a><br><br>
+<a href="clockpage.php" class="btn btn-success">Go to Clock-In Page</a><br><br>
 
 </body>
 </html>

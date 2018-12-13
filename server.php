@@ -184,16 +184,12 @@ if (isset($_POST['weekid'])){
 
 if (isset($_POST['clock'])){
 
-  $date = date('Y-m-d H:i:s');
+  $date = date('Y-m-d-H-i-s');
   $id = mysqli_real_escape_string($db, $_REQUEST['ID']);
 
-  $conn = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
-//Check connection
-if ($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
-} 
+
 $sql = "SELECT ID FROM Employee WHERE ID='$id'";
-$result = $conn->query($sql);
+$result = $db->query($sql);
 if ($result->num_rows > 0){
     // output data of each row
     //while($row = $result->fetch_assoc()) {
@@ -240,26 +236,28 @@ else {
 }
 echo $query . "<br>" . $out . "<br>";
 $sql = "SELECT $query, $out FROM Week WHERE ID='$id'";
-$result = $conn->query($sql);
+$result = $db->query($sql);
 if ($result->num_rows > 0){
   $row = $result->fetch_assoc();
   echo  $query . " Time: " . $row[$query] . "<br>" . $out . " Time: " . $row[$out];
   //When they Clock-In Correctly
   if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
     $sql = "UPDATE Week SET $query = '$date' WHERE ID = '$id'";
-    echo "Successfully Clocked-In!";
+    // echo "Successfully Clocked-In!";
+    //header('Location: clocksuccess.php');
   }
   //When they Clock-Out Correctly
   else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
     $sql = "UPDATE Week SET $out = '$date' WHERE ID = '$id'";
-    echo "Successfully Clocked-Out!";
+    // echo "Successfully Clocked-Out!";
+    //header('Location: clocksuccess2.php');
   }
-  //When they "double" Clock-In
-  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
+  //When they "double" Clock-In for the day.
+  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') || ($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
     header('Location: clockpage.php?a=c');
   }
   //When they "double" Clock_Out
-  else if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
+  else if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') || ($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
     header('Location: clockpage.php?a=b');
   }
   else{

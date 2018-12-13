@@ -42,5 +42,10 @@
       </div>
     </div>
 </form>
+
+<br>
+<a href="liscreen.php" class="btn btn-success">Go to Log-In Page</a><br><br>
+<a href="clockpage.php" class="btn btn-success">Go to Clock-In Page</a><br><br>
+
 </body>
 </html>
