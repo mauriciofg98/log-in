@@ -4,7 +4,6 @@
 <head>
 	<title>Success</title>
 	<meta http-equiv = "refresh" content = "4;clockpage.php"/>
-
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -18,10 +17,8 @@
           justify-content: center;
         }
     </style>
-
 </head>
 <body>
-
 <form id="loginform" class="form-horizontal" role="form">
     <div class="container">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -31,7 +28,7 @@
                 </div>
                 <center>
                     <div>
-                        <p style="font-size:20px;color:#5C5C5C;margin-top: 70px.;margin-bottom: 70px;">You have been successfully Clocked-Out!</p>
+                        <p style="font-size:20px;color:#5C5C5C;margin-top: 140px.;margin-bottom: 70px;">You have been successfully clocked-out!</p>
                     </div>
                 </center>
             </div>
