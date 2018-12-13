@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -25,10 +24,9 @@
         color:#5C5C5C;
         }
     </style>
-  <title>Clock-In/Out</title>
+<title>Clock-In/Out</title>
 </head>
 <body onload="setTime()">
-
 <?php
 if (isset($_GET['a'])){
 if($_GET['a']=='y'){
@@ -75,10 +73,8 @@ else{
             </center>
         </form>
     </form>
-
 <br>
 <a href="reg.php" class="btn btn-success">Go to Register Page</a><br><br>
 <a href="liscreen.php" class="btn btn-success">Go to Log-In Page</a><br><br>
-
 </body>
 </html>

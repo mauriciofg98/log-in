@@ -8,7 +8,7 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
-
+date_default_timezone_set('America/Monterrey');
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
@@ -138,9 +138,7 @@ if (isset($_POST['reg']))
   $Name = mysqli_real_escape_string($db, $_REQUEST['Name']);
   $Age = mysqli_real_escape_string($db, $_REQUEST['Age']);
   $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
-  if(mysqli_query($db, $sql)){
-    #echo "Records added successfully.";
-  }
+  if(mysqli_query($db, $sql)){}
   else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
   }
@@ -148,7 +146,7 @@ if (isset($_POST['reg']))
 
 if (isset($_POST['weekid'])){
   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
-  $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000', '0000-00-00 00:00:00:000000')";
+  $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00')";
   if(mysqli_query($db, $sql)){
     echo "Records added successfully.";
   }
@@ -157,123 +155,80 @@ if (isset($_POST['weekid'])){
   }
 }
 
-// if (isset($_POST['week'])){
-//   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
-//   $Monday_Ci = mysqli_real_escape_string($db, $_REQUEST['Monday_Ci']);
-//   $Monday_Co = mysqli_real_escape_string($db, $_REQUEST['Monday_Co']);
-//   $Tuesday_Ci = mysqli_real_escape_string($db, $_REQUEST['Tuesday_Ci']);
-//   $Tuesday_Co = mysqli_real_escape_string($db, $_REQUEST['Tuesday_Co']);
-//   $Wednesday_Ci = mysqli_real_escape_string($db, $_REQUEST['Wednesday_Ci']);
-//   $Wednesday_Co = mysqli_real_escape_string($db, $_REQUEST['Wednesday_Co']);
-//   $Thursday_Ci = mysqli_real_escape_string($db, $_REQUEST['Thursday_Ci']);
-//   $Thursday_Co = mysqli_real_escape_string($db, $_REQUEST['Thursday_Co']);
-//   $Friday_Ci = mysqli_real_escape_string($db, $_REQUEST['Friday_Ci']);
-//   $Friday_Co = mysqli_real_escape_string($db, $_REQUEST['Friday_Co']);
-//   $Saturday_Ci = mysqli_real_escape_string($db, $_REQUEST['Saturday_Ci']);
-//   $Saturday_Co = mysqli_real_escape_string($db, $_REQUEST['Saturday_Co']);
-//   $Sunday_Ci = mysqli_real_escape_string($db, $_REQUEST['Sunday_Ci']);
-//   $Sunday_Co = mysqli_real_escape_string($db, $_REQUEST['Sunday_Co']);
-//   $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
-//   if(mysqli_query($db, $sql)){
-//     #echo "Records added successfully.";
-//   }
-//   else{
-//     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
-//   }
-// }
-
 if (isset($_POST['clock'])){
-
-  $date = date('Y-m-d-H-i-s');
+  $date = date('Y-m-d H:i:s');
   $id = mysqli_real_escape_string($db, $_REQUEST['ID']);
-
-
-$sql = "SELECT ID FROM Employee WHERE ID='$id'";
-$result = $db->query($sql);
-if ($result->num_rows > 0){
-    // output data of each row
-    //while($row = $result->fetch_assoc()) {
-      // header("Location: hours.php?flag=0";
-      // header('Location:clockdatecheck.php?ID=' . $row['ID']);
-    //}
-
-$unixTimestamp = strtotime($date);
-$dayOfWeek = date("l", $unixTimestamp);
-echo "Todays Date:" . $date . " Falls on a " . $dayOfWeek . "<br>"; 
-//echo $date . ' fell on a ' . $dayOfWeek;
-$query;
-$out;
-if ($dayOfWeek == "Monday"){
-  $query = "Monday_Ci";
-  $out = "Monday_Co";
-}
-else if ($dayOfWeek == "Tuesday"){
-  $query = "Tuesday_Ci";
-  $out = "Tuesday_Co";
-}
-else if ($dayOfWeek == "Wednesday"){
-  $query = "Wednesday_Ci";
-  $out = "Wednesday_Co";
-}
-else if ($dayOfWeek == "Thursday"){
-  $query = "Thursday_Ci";
-  $out = "Thursday_Co";
-}
-else if ($dayOfWeek == "Friday"){
-  $query = "Friday_Ci";
-  $out = "Friday_Co";
-}
-else if ($dayOfWeek == "Saturday"){
-  $query = "Saturday_Ci";
-  $out = "Saturday_Co";
-}
-else if ($dayOfWeek == "Sunday"){
-  $query = "Sunday_Ci";
-  $out = "Sunday_Co";
-}
-else {
-  echo "Error!";
-}
-echo $query . "<br>" . $out . "<br>";
-$sql = "SELECT $query, $out FROM Week WHERE ID='$id'";
-$result = $db->query($sql);
-if ($result->num_rows > 0){
-  $row = $result->fetch_assoc();
-  echo  $query . " Time: " . $row[$query] . "<br>" . $out . " Time: " . $row[$out];
-  //When they Clock-In Correctly
-  if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
-    $sql = "UPDATE Week SET $query = '$date' WHERE ID = '$id'";
-    // echo "Successfully Clocked-In!";
-    //header('Location: clocksuccess.php');
-  }
-  //When they Clock-Out Correctly
-  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
-    $sql = "UPDATE Week SET $out = '$date' WHERE ID = '$id'";
-    // echo "Successfully Clocked-Out!";
-    //header('Location: clocksuccess2.php');
-  }
-  //When they "double" Clock-In for the day.
-  else if(($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') || ($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
-    header('Location: clockpage.php?a=c');
-  }
-  //When they "double" Clock_Out
-  else if(($row[$query] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') || ($row[$query] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
-    header('Location: clockpage.php?a=b');
-  }
-  else{
-    echo "Default Case.";
-  }
-}
-}
-else{
+  $sql = "SELECT ID FROM Employee WHERE ID='$id'";
+  $result = $db->query($sql);
+    if ($result->num_rows > 0){
+      $unixTimestamp = strtotime($date);
+      $dayOfWeek = date("l", $unixTimestamp);
+      $in;
+      $out;
+      if ($dayOfWeek == "Monday"){
+        $in = "Monday_Ci";
+        $out = "Monday_Co";
+      }
+      else if ($dayOfWeek == "Tuesday"){
+        $in = "Tuesday_Ci";
+        $out = "Tuesday_Co";
+      }
+      else if ($dayOfWeek == "Wednesday"){
+        $in = "Wednesday_Ci";
+        $out = "Wednesday_Co";
+      }
+      else if ($dayOfWeek == "Thursday"){
+        $in = "Thursday_Ci";
+        $out = "Thursday_Co";
+      }
+      else if ($dayOfWeek == "Friday"){
+        $in = "Friday_Ci";
+        $out = "Friday_Co";
+      }
+      else if ($dayOfWeek == "Saturday"){
+        $in = "Saturday_Ci";
+        $out = "Saturday_Co";
+      }
+      else if ($dayOfWeek == "Sunday"){
+        $in = "Sunday_Ci";
+        $out = "Sunday_Co";
+      }
+      else {
+        echo "Error!";
+      }
+      $sql = "SELECT $in, $out FROM Week WHERE ID='$id'";
+      $result = $db->query($sql);
+      if ($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        //When they Clock-In Correctly
+        if(($row[$in] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
+          $sql = "UPDATE Week SET $in = '$date' WHERE ID = '$id'";
+          header('Location: clocksuccess.php');
+        }
+        //When they Clock-Out Correctly
+        else if(($row[$in] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
+          $sql = "UPDATE Week SET $out = '$date' WHERE ID = '$id'";
+          header('Location: clocksuccess2.php');
+        }
+        //When they "double" Clock-In for the day.
+        else if(($row[$in] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '0') || ($row[$in] != '0000-00-00 00:00:00' && $_POST['clock'] == '0') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '0')){
+          header('Location: clockpage.php?a=c');
+        }
+        //When they "double" Clock_Out
+        else if(($row[$in] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] == '0000-00-00 00:00:00' && $_POST['clock'] == '1') || ($row[$in] != '0000-00-00 00:00:00' && $_POST['clock'] == '1') && ($row[$out] != '0000-00-00 00:00:00' && $_POST['clock'] == '1')){
+          header('Location: clockpage.php?a=b');
+        }
+        else{
+          echo "Default Case.";
+        }
+      }
+    }
+    else{
     echo "0 results";
-}
-
-  if(mysqli_query($db, $sql)){
-    #echo "Records added successfully.";
-  }
-  else{
+    }
+    if(mysqli_query($db, $sql)){}
+    else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+    }
   }
-}
 ?>
