@@ -7,8 +7,8 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
-
+$db = mysqli_connect('localhost', 'root', '', 'project1');
+date_default_timezone_set('America/Monterrey');
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
