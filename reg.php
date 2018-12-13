@@ -8,12 +8,8 @@
       <title>Register Employee</title>
 </head>
 <body>
-<<<<<<< HEAD
 
-<form method="POST" action="demogaphics.php">
-=======
 <form method="POST" action="success.php">
->>>>>>> 9e7b93f967ce4550d0a3336188ce750804616436
   <div class="container">    
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
       <div class="panel panel-info" >
@@ -24,7 +20,6 @@
         </div> 
         <div style="padding-top:30px" class="panel-body" >
           <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-<<<<<<< HEAD
             <form id="loginform" class="form-horizontal" role="form">
               <div style="margin-bottom: 25px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -72,8 +67,7 @@
                   <div class="input-group">
                     <button type="submit" class="btn btn-success" name="reg">Register</button>
                   </div>
-=======
-          <form id="loginform" class="form-horizontal" role="form">
+<!--           <form id="loginform" class="form-horizontal" role="form">
             <div style="margin-bottom: 25px" class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 <input type="text" name="Name" class="form-control" placeholder=" Full Name">
@@ -90,7 +84,7 @@
                 </div>
               </div>
             </center>
-          </form>
+          </form> -->
         </div>                     
       </div>  
     </div>

@@ -7,11 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-<<<<<<< HEAD
-$db = mysqli_connect('localhost', 'root', '', 'project1');
-=======
 $db = mysqli_connect('localhost:3307', 'gfonsec2', 'LuckyFonsec1;', 'clock');
->>>>>>> 9e7b93f967ce4550d0a3336188ce750804616436
 date_default_timezone_set('America/Monterrey');
 if($db === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -139,20 +135,24 @@ if (isset($_POST['projectloc']))
 //////////////////////////////////////////////////////////////////////////
 $race;
 $gender;
+$age;
 $email;
 $phone;
 $address;
+
 if (isset($_POST['reg']))
 {
   $Name = mysqli_real_escape_string($db, $_REQUEST['Name']);
-  $Age = mysqli_real_escape_string($db, $_REQUEST['Age']);
+
   $race = mysqli_real_escape_string($db, $_REQUEST['Race']);
   $gender = mysqli_real_escape_string($db, $_REQUEST['Gender']);
+  $age = mysqli_real_escape_string($db, $_REQUEST['Age']);
+
   $email = mysqli_real_escape_string($db, $_REQUEST['email']);
   $phone = mysqli_real_escape_string($db, $_REQUEST['phone']);
   $address = mysqli_real_escape_string($db, $_REQUEST['address']);
 
-  $sql = "INSERT INTO Employee ( Name, Age) VALUES ( '$Name', '$Age')";
+  $sql = "INSERT INTO Employee ( Name) VALUES ( '$Name')";
   if(mysqli_query($db, $sql)){}
   else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
@@ -162,10 +162,19 @@ if (isset($_POST['reg']))
 if (isset($_POST['weekid'])){
 
   $ID = mysqli_real_escape_string($db, $_REQUEST['ID']);
-
-  $sql = "INSERT INTO Demographics ( ID, Race, Gender, Age) VALUES ('$ID', '$race', '$gender', '$age')";
+  echo  $race . $gender . $age . $email . $phone . $address;
+  
+  
   $sql = "INSERT INTO contact ( ID, email, phone, address) VALUES ('$ID', '$email', '$phone', '$address')";
-
+  if(mysqli_query($db, $sql)){}
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
+$sql = "INSERT INTO Demographics ( ID, Race, Gender, Age) VALUES ('$ID', '$race', '$gender', '$age')";
+if(mysqli_query($db, $sql)){}
+  else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  }
   $sql = "INSERT INTO Week ( ID, Monday_Ci, Monday_Co, Tuesday_Ci, Tuesday_Co, Wednesday_Ci, Wednesday_Co, Thursday_Ci, Thursday_Co, Friday_Ci, Friday_Co, Saturday_Ci, Saturday_Co, Sunday_Ci, Sunday_Co) VALUES ('$ID', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00')";
   if(mysqli_query($db, $sql)){
     echo "Records added successfully.";
@@ -173,6 +182,7 @@ if (isset($_POST['weekid'])){
   else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
   }
+  
 }
 
 if (isset($_POST['clock'])){
